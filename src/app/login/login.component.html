@@ -1,0 +1,51 @@
+<div class="page-wrapper">
+    <header id="page-header">
+        <nav>
+            <div>
+                <img src="../../assets/img/logo.svg" alt="" class="logo-w">
+            </div>
+            <!--end left-->
+           
+        </nav>
+        <!--end nav-->
+    </header>
+<div class="container-fluid">
+    <div class="row mt-2">
+       <div class="col-12 col-md-6 login-left-bg">
+       </div>
+       <div class="col-12 col-md-6 ">
+          <div class="parent">
+             <div class="child">
+                <div class="sign">Sign in</div>
+                <div class="login-form">
+                   <div class="form-outline mb-4 ">
+                      <label class="form-label" for="form6Example7">User Email</label>
+                     
+                     <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+                        <div>
+
+                          <input type="email" id="email" formControlName="email">
+                          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                            <div *ngIf="email?.errors?.['required']">
+                              Email is required.
+                            </div>
+                            <div *ngIf="email?.errors?.['pattern']">
+                              Invalid email format.
+                            </div>
+                          </div>
+                        </div>
+                        <app-otp *ngIf="isSubmited" (otpFormValue)="otpFormValueChanged($event)"></app-otp>
+                        <button type="submit" *ngIf="!isSubmited" [disabled]="emailForm.invalid" class="btn btn-login mrt-20">Sign in using email OTP</button>
+                      <button type="submit" (click)="otpsubmit()" *ngIf="isSubmited" class="btn btn-login"[disabled]="isOtpFormInvalid">Submit and Sign In</button>
+                        
+                     </form>
+                     
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+ </div>

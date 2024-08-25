@@ -1,0 +1,15 @@
+<ng-container *ngFor="let item of data">
+    <ng-container *ngIf="!item.child">
+      <button mat-menu-item>
+        {{ item.name }}
+      </button>
+    </ng-container>
+    <ng-container *ngIf="item.child">
+      <button mat-menu-item [matMenuTriggerFor]="nestedMenu">
+        {{ item.name }}
+      </button>
+      <mat-menu #nestedMenu="matMenu">
+        <app-recursive-dropdown [data]="item.child"></app-recursive-dropdown>
+      </mat-menu>
+    </ng-container>
+  </ng-container>

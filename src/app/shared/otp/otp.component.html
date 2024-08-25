@@ -1,0 +1,42 @@
+
+  
+    <div class="container-fluid">
+       <div class="row mt-2">
+         
+          <div class="col-12 col-md-12 ">
+             
+                
+                   <div class="otphead">Enter a OTP</div>
+                   <div class="otp-container">
+                    <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+                      <div class="otp-inputs">
+                        <input type="text" maxlength="1" formControlName="otp1" 
+                               (input)="onOtpInput($event, otp2, null)" 
+                               (keydown)="onOtpKeydown($event, null)" #otp1>
+                        <input type="text" maxlength="1" formControlName="otp2" 
+                               (input)="onOtpInput($event, otp3, otp1)" 
+                               (keydown)="onOtpKeydown($event, otp1)" #otp2>
+                        <input type="text" maxlength="1" formControlName="otp3" 
+                               (input)="onOtpInput($event, otp4, otp2)" 
+                               (keydown)="onOtpKeydown($event, otp2)" #otp3>
+                        <input type="text" maxlength="1" formControlName="otp4" 
+                               (input)="onOtpInput($event, otp5, otp3)" 
+                               (keydown)="onOtpKeydown($event, otp3)" #otp4>
+                        <input type="text" maxlength="1" formControlName="otp5" 
+                               (input)="onOtpInput($event, otp6, otp4)" 
+                               (keydown)="onOtpKeydown($event, otp4)" #otp5>
+                        <input type="text" maxlength="1" formControlName="otp6" 
+                               (input)="onOtpInput($event, null, otp5)" 
+                               (keydown)="onOtpKeydown($event, otp5)" #otp6>
+                      </div>
+                    </form>
+                  
+                    <button *ngIf="resendButtonVisible" class="resendotp" (click)="resendOtp()">Resend OTP</button>
+                    <div *ngIf="!resendButtonVisible">
+                      Resend OTP available in {{ countdown }} seconds
+                    </div>
+                  </div>
+                
+          </div>
+       </div>
+    </div>

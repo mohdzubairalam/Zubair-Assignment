@@ -1,0 +1,27 @@
+<div class="page-wrapper">
+  <header id="page-header">
+      <nav>
+        
+          <div class="logo ">
+            <a routerLink="/login" >
+            <img src="../../assets/img/logo.svg" alt="" class="logo-w">
+          </a>
+        
+
+        </div>
+          <div class="menu">  <button mat-button [matMenuTriggerFor]="menu">
+         <div class="valign-center">
+           <span> Open Menu </span>
+            <i class="material-icons">arrow_drop_down</i>
+          </div>
+          </button>
+         
+            <mat-menu #menu="matMenu">
+              <app-recursive-dropdown [data]="data"></app-recursive-dropdown>
+            </mat-menu></div>
+        
+         
+      </nav>
+      
+  </header>
+  </div>
